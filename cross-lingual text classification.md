@@ -1,4 +1,5 @@
 # Cross-lingual text classification
+#### Author: Zizhuo Ren
 ## overview
  - Crosslingual text classification is a variant of text classification, in which we want to automatically classify documents in a language, when the only available training data is in a different language.
  - **Parallel corpora**: large pool of unlabelled data - datasets with senetences and their respective transltion from different sources.
