@@ -27,7 +27,10 @@ This method is focusing on the reduction of domain/distribution matches in CLTC.
 - Firstly, train a source-language classifier with both labeled training documents and adapt it to the unlabeled documents from the source-language side of the parallel corpus.The adaptation enforces our classifier to extract features that are: **1) discriminative for the classification task** and **2) invariant with regard to the distribution shift between training and parallel data**.
 - Secondly, use the trained source-language classifier to obtain the soft labels for a parallel corpus, and the target-language part of the parallel corpus to train a target classifier, which yields a similar category distribution over target-language documents as that over source-language documents.
 - In short, the model can be conclude like this:
--- Train a source language classifier and get optimal parameter \theta
+1.Train a source language classifier and get optimal parameter 
+2.Use this trained optimal parameter to classify the target language (These two classifiers use the same temperatures) 
+3.Given the assumption that paired document in parallel corpus should have the same distribution of class predicted by the source model and target model.
+4.We optimize the parameter in the target classifier based on a loss function on each document in parallel corpus.
 
 The first step addresses the potential domain/distribution mismatch between the labeled data and the unlabeled data in the source language. And the second step addresses the potential mismatch between the target-domain training data (in the parallel corpus) and the test data (not in the parallel corpus).
 
