@@ -13,7 +13,7 @@ from the another one.
 Finding representations of documents such that similar documents have similar representations. Having such representations, one can train a classifier in the source language, and it should work on the target language, since the representations are independent of language.
 - **Cross-lingual representations starting by learning monolingual representations**: start by learning monolingual representations, and then use parallel corpora to transform them into cross-lingual representations.
 - **Learn biolingual representations**: based on a parallel corpus.
-## *Fasttext for multilingual(or even better embeddings-conceptNet)
+## *[Fasttext](https://arxiv.org/pdf/1607.01759.pdf) for multilingual(or even better embeddings-conceptNet)
 The original fasttext vector are monolingual, meaning that while similar words within a language share similar vectors, translation words from different languages do not have similar vectors.
   - SVD can be used to learn a linear transformation (a matrix), which aligns monolingual vectors from two languages in a single vector space
 
@@ -41,6 +41,8 @@ All use an unlabeled parallel corpus. These series of methods learn latent docum
 [Co-Training for Cross-Lingual Sentiment Classification](http://delivery.acm.org/10.1145/1690000/1687913/p235-wan.pdf?ip=216.165.95.141&id=1687913&acc=OPEN&key=36E5A5D4E382B3FA%2E36E5A5D4E382B3FA%2E4D4702B0C3E38B35%2E6D218144511F3437&CFID=984563843&CFTOKEN=54792419&__acm__=1506294235_0e0589001eddd4df30821a0fb4c31a28)
 The methods in this category all use an MT system to translate each test document in the target language to the source language in the testing phase. It will introduce a method called co-training which train different classifier on both source and target languages.The classification can be based on logistic regression or deep averaging network.
 ## Adversarial Deep Averaging Network (ADAN)
+[Adversarial Deep Averaging Networks for Cross-Lingual Sentiment Classification](https://arxiv.org/pdf/1606.01614.pdf)
+This model aims to learn language invariant features using adversarial training.
 Exploits adversarial training for CLTC. It uses averaged bilingual embeddings of words as its input and adapts the feature extractor to produce similar features in both languages.
 
 ## Possible solutions to our data
@@ -52,9 +54,9 @@ Translate foreign language to english (vocabulary base or translate directly). T
 semi-supervised learning
 3. **Cross-lingual Distillation for Text Classification**:
 Introduced above
-4. wikipedia query to get foreign copus and combine with source language
+4. **TODO: wikipedia query to get foreign copus and combine with source language**
+* possible solution (ADAN): which learn a bilingual wording embedding
 
-B set -- foreign label
 
 [tokenizer and segmenter](https://pypi.python.org/pypi/tinysegmenter)
 
