@@ -43,6 +43,7 @@ The methods in this category all use an MT system to translate each test documen
 ## Adversarial Deep Averaging Network (ADAN)
 [Adversarial Deep Averaging Networks for Cross-Lingual Sentiment Classification](https://arxiv.org/pdf/1606.01614.pdf)
 ![model structure](ADANmodel.png)
+
 This model aims to learn language invariant features using adversarial training.
 Exploits adversarial training for CLTC. It uses averaged bilingual embeddings of words as its input and adapts the feature extractor to produce similar features in both languages.
 
