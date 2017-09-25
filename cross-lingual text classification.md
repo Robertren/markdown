@@ -22,9 +22,12 @@ There is another group proposed [ConceptNet Numberbatch](https://github.com/comm
 
 
 ## *Cross-lingual Distillation for Text Classification (parallel-corpus based approach) 
+[Cross-lingual Distillation for Text Classification](https://arxiv.org/pdf/1705.02073.pdf)
 This method is focusing on the reduction of domain/distribution matches in CLTC. And we also need to know about knowledge distillation, once the cumbersome teacher network was trained, the student network was trained according to soften predictions of the teacher network.
-- Firstly, train a source-language classifier with both labeled training documents and adapt it to the unlabeled documents from the source-language side of the parallel corpus.The adaptation enforces our classifier to extract features that are: **1) discriminative for the classification task** and **2) invariant with regard to the distribution shift between trainingand parallel data**.
+- Firstly, train a source-language classifier with both labeled training documents and adapt it to the unlabeled documents from the source-language side of the parallel corpus.The adaptation enforces our classifier to extract features that are: **1) discriminative for the classification task** and **2) invariant with regard to the distribution shift between training and parallel data**.
 - Secondly, use the trained source-language classifier to obtain the soft labels for a parallel corpus, and the target-language part of the parallel corpus to train a target classifier, which yields a similar category distribution over target-language documents as that over source-language documents.
+- In short, the model can be conclude like this:
+-- Train a source language classifier and get optimal parameter \theta
 
 The first step addresses the potential domain/distribution mismatch between the labeled data and the unlabeled data in the source language. And the second step addresses the potential mismatch between the target-domain training data (in the parallel corpus) and the test data (not in the parallel corpus).
 
@@ -32,13 +35,22 @@ The first step addresses the potential domain/distribution mismatch between the 
 All use an unlabeled parallel corpus. These series of methods learn latent document representations in a shared lowdimensional space by performing the Latent Semantic Indexing (LSI), the Oriented Principal Component Analysis (OPCA) and a kernel (namely KCAA) for the parallel text.
 - **LSI**:  An LSI analysis of these training documents results in a dualanguage semantic space in which terms from both languages ,are represented.
 ## MT-based CLTC Methods (MT+LR, MT+DAN)
+[Co-Training for Cross-Lingual Sentiment Classification](http://delivery.acm.org/10.1145/1690000/1687913/p235-wan.pdf?ip=216.165.95.141&id=1687913&acc=OPEN&key=36E5A5D4E382B3FA%2E36E5A5D4E382B3FA%2E4D4702B0C3E38B35%2E6D218144511F3437&CFID=984563843&CFTOKEN=54792419&__acm__=1506294235_0e0589001eddd4df30821a0fb4c31a28)
 The methods in this category all use an MT system to translate each test document in the target language to the source language in the testing phase. It will introduce a method called co-training which train different classifier on both source and target languages.The classification can be based on logistic regression or deep averaging network.
 ## Adversarial Deep Averaging Network (ADAN)
 Exploits adversarial training for CLTC. It uses averaged bilingual embeddings of words as its input and adapts the feature extractor to produce similar features in both languages.
 
 ## Possible solutions to our data
 Based on the literature review I performed. Basically, there are two main approaches we can go. I would suggest we go for parallel corpora.
+### From easy to hard
+1. **Train only one english model** (Baseline):
+Translate foreign language to english (vocabulary base or translate directly). Then we can only train one english classifer and use this classifier to classify foreign language.
+2. **machine translation and co-training**
+semi-supervised learning
+3. wikipedia query to get foreign copus and combine with source language
 
+B set -- foreign label
 
 [tokenizer and segmenter](https://pypi.python.org/pypi/tinysegmenter)
+
 
